@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-const Container = styled.div`
+const Container = styled.button`
+  all: unset;
   width: 100px;
   height: 100px;
   font-size: 80px;
@@ -11,7 +12,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export function Cell({ turn, setTurn, idx, setMap, map }) {
+export function Cell({ turn, setTurn, idx, setMap, map, isFinished }) {
   const [value, setValue] = useState("");
 
   useEffect(() => {
@@ -35,5 +36,9 @@ export function Cell({ turn, setTurn, idx, setMap, map }) {
       setTurn(turn + 1);
     }
   };
-  return <Container onClick={handleMove}>{value}</Container>;
+  return (
+    <Container onClick={handleMove} disabled={isFinished}>
+      {value}
+    </Container>
+  );
 }
