@@ -60,7 +60,7 @@ export function Snake() {
       }
       setSnake({ ...snake, size: newSize })
       checkLose()
-    }, 1000 / snake.size.length)
+    }, Math.pow(0.9, snake.size.length) * 700)
     return () => clearInterval(interval)
   }, [snake])
 
